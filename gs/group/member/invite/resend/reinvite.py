@@ -69,7 +69,7 @@ class ResendInvitationForm(GroupForm):
                   'toAddr': self.defaultToEmail,
                   'fn': self.userInfo.name,
                   'userId': self.userId}
-        subject = 'Another Invitation to Join {0} (Action Required)'
+        subject = 'Invitation to Join {0} (Action Required)'
         data['subject'] = subject.format(self.groupInfo.name)
 
         m = '''Please accept this invitation to join {0}. I have set up a

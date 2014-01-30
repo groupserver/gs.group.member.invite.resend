@@ -16,7 +16,17 @@ Resend an invitation to join a group
 Introduction
 ============
 
-Sometimes, for whatever reason, an invitation fails to be delivered. This product allows the invitation to be resent.
+Sometimes, for whatever reason, an invitation fails to be delivered. This
+product provides the `Resend page`_ that allows the invitation to be
+resent.
+
+Resend page
+===========
+
+The Resend page, ``resend_invitation.html`` in the group context, provides
+a entry to write a message, a button to preview the message, and one to
+send the invitation. The *Preview* button, and sending the invitation
+itself, is handled by the base Invitation product [#base]_.
 
 Resources
 =========
