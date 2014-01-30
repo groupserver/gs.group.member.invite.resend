@@ -26,7 +26,7 @@ from gs.profile.email.base.emailuser import EmailUser
 from gs.group.member.invite.base.inviter import Inviter
 from gs.group.member.invite.base.audit import Auditor, INVITE_OLD_USER,\
     INVITE_EXISTING_MEMBER
-from gs.group.member.invite.base.interfaces import IGSResendInvitation
+from .interfaces import IGSResendInvitation
 
 
 class ResendInvitationForm(GroupForm):
@@ -67,17 +67,16 @@ class ResendInvitationForm(GroupForm):
     def setUpWidgets(self, ignore_request=False):
         data = {'fromAddr': self.defaultFromEmail,
                   'toAddr': self.defaultToEmail,
+                  'fn': self.userInfo.name,
                   'userId': self.userId}
         subject = 'Another Invitation to Join {0} (Action Required)'
         data['subject'] = subject.format(self.groupInfo.name)
 
-        m = '''Hello {0}
+        m = '''Please accept this invitation to join {0}. I have set up a
+profile for you, so you can start  participating in the group as soon as you
+accept this invitation.'''
 
-Please accept this invitation to join {1}. I have set up a profile for you,
-so you can start  participating in the group as soon as you accept this
-invitation.'''
-
-        data['message'] = m.format(self.userInfo.name, self.groupInfo.name)
+        data['message'] = m.format(self.groupInfo.name)
 
         self.widgets = form.setUpWidgets(
             self.form_fields, self.prefix, self.context,
