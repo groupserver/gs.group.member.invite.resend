@@ -22,7 +22,7 @@ from Products.XWFCore.XWFUtils import get_the_actual_instance_from_zope
 from Products.GSGroup.groupInfo import groupInfo_to_anchor
 from Products.GSGroupMember.groupMembersInfo import GSGroupMembersInfo
 from gs.group.base import GroupForm
-from gs.profile.email.base.emailuser import EmailUser
+from gs.profile.email.base import EmailUser
 from gs.group.member.invite.base.inviter import Inviter
 from gs.group.member.invite.base.audit import Auditor, INVITE_OLD_USER,\
     INVITE_EXISTING_MEMBER

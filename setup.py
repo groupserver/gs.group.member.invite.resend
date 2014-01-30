@@ -46,6 +46,23 @@ setup(name='gs.group.member.invite.resend',
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'zope.browserpage',  # For the <browser:page /> ZCML
+        'zope.cachedescriptors',
+        'zope.component',
+        'zope.formlib',
+        'zope.interface',
+        'zope.schema',
+        'zope.tal',
+        'zope.tales',
+        'Zope2',
+        'gs.content.layout',
+        'gs.group.base',
+        'gs.group.member.invite.base',
+        'gs.profile.email.base',
+        'Products.CustomUserFolder',
+        'Products.XWFCore',
+        'Products.GSGroup',
+        'Products.GSGroupMember',
     ],
     entry_points="""
     # -*- Entry points: -*-
