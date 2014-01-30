@@ -69,8 +69,9 @@
         </tal:block>
       </div><!--buttons-->
     </form>
-    <script metal:fill-slot="javascript"
-            type="text/javascript" defer="true"
-            src="/++resource++gs-profile-invite-base-new-20130613.js"> </script>
+    <script
+      metal:fill-slot="javascript"
+      type="text/javascript" defer="true"
+      src="/++resource++gs-profile-invite-base-new-20140127.js"> </script>
   </body>
 </html>
