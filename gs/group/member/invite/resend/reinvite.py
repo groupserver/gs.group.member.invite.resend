@@ -20,8 +20,8 @@ from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 from Products.CustomUserFolder.userinfo import userInfo_to_anchor
 from Products.XWFCore.XWFUtils import get_the_actual_instance_from_zope
 from Products.GSGroup.groupInfo import groupInfo_to_anchor
-from Products.GSGroupMember.groupMembersInfo import GSGroupMembersInfo
 from gs.group.base import GroupForm
+from gs.group.member.base import (FullMembers, InvitedMembers, )
 from gs.profile.email.base import EmailUser
 from gs.group.member.invite.base.inviter import Inviter
 from gs.group.member.invite.base.audit import Auditor, INVITE_OLD_USER,\
@@ -116,7 +116,7 @@ accept this invitation.'''
 
     def issues(self, u, e, g):
         msg = '<ul><li>Cannot <strong>resend</strong> an invitation to {0}, '\
-              'because he or she is yet been invited to join {1}.</li>'\
+              'because they have yet been invited to join {1}.</li>'\
               '<li>No changes have been made.</li>'
         retval = msg.format(u, g)
         return retval
@@ -126,11 +126,12 @@ accept this invitation.'''
         u = userInfo_to_anchor(self.userInfo)
         g = groupInfo_to_anchor(self.groupInfo)
         auditor, inviter = self.get_auditor_inviter()
-        membersInfo = GSGroupMembersInfo(self.groupInfo.groupObj)
-        if self.userId in [m.id for m in membersInfo.fullMembers]:
+        fullMembers = FullMembers(self.groupInfo.groupObj)
+        invitedMembers = InvitedMembers(self.groupInfo.groupObj)
+        if self.userId in fullMembers:
             auditor.info(INVITE_EXISTING_MEMBER, self.defaultToEmail)
             self.status = self.already_a_member(u, e, g)
-        elif self.userId in [m.id for m in membersInfo.invitedMembers]:
+        elif self.userId in invitedMembers:
             self.status = self.resent(u, e, g)
             inviteId = inviter.create_invitation(data, False)
             auditor.info(INVITE_OLD_USER, self.defaultToEmail)
