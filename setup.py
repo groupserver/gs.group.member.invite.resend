@@ -12,18 +12,24 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+import codecs
 import os
 from setuptools import setup, find_packages
 from version import get_version
 
+name = 'gs.group.member.invite.resend'
 version = get_version()
+with codecs.open('README.rst', encoding='utf-8') as f:
+    long_description = f.read()
+with codecs.open(os.path.join("docs", "HISTORY.rst"),
+                 encoding='utf-8') as f:
+    long_description += '\n' + f.read()
 
 setup(
-    name='gs.group.member.invite.resend',
+    name=name,
     version=version,
-    description="Resend an invitation/.",
-    long_description=open("README.rst").read() + "\n" +
-    open(os.path.join("docs", "HISTORY.rst")).read(),
+    description="Resend an invitation to a group member",
+    long_description=long_description,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         "Environment :: Web Environment",
@@ -31,18 +37,18 @@ setup(
         "Intended Audience :: Developers",
         'License :: OSI Approved :: Zope Public License',
         "Natural Language :: English",
-        "Operating System :: POSIX :: Linux"
+        "Operating System :: POSIX :: Linux",
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     keywords='profile, user, join, invitation, group, resend',
     author='Michael JasonSmith',
     author_email='mpj17@onlinegroups.net',
-    url='http://groupserver.org',
+    url='https://github.com/groupserver/{0}'.format(name),
     license='ZPL 2.1',
     packages=find_packages(exclude=['ez_setup']),
-    namespace_packages=['gs', 'gs.group', 'gs.group.member',
-                        'gs.group.member.invite'],
+    namespace_packages=['.'.join(name.split('.')[:i])
+                        for i in range(1, len(name.split('.')))],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
@@ -58,12 +64,12 @@ setup(
         'Zope2',
         'gs.content.layout',
         'gs.group.base',
+        'gs.group.member.base',
         'gs.group.member.invite.base',
         'gs.profile.email.base',
         'Products.CustomUserFolder',
         'Products.XWFCore',
         'Products.GSGroup',
-        'Products.GSGroupMember',
     ],
     entry_points="""
     # -*- Entry points: -*-
