@@ -24,8 +24,7 @@ from gs.group.base import GroupForm
 from gs.group.member.base import (FullMembers, InvitedMembers, )
 from gs.profile.email.base import EmailUser
 from gs.group.member.invite.base.inviter import Inviter
-from gs.group.member.invite.base.audit import Auditor, INVITE_OLD_USER,\
-    INVITE_EXISTING_MEMBER
+from gs.group.member.invite.base.audit import (Auditor, INVITE_OLD_USER, INVITE_EXISTING_MEMBER)
 from .interfaces import IGSResendInvitation
 
 
