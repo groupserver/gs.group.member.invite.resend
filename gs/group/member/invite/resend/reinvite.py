@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright © 2014 OnlineGroups.net and Contributors.
+# Copyright © 2014, 2016 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -12,7 +12,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from __future__ import absolute_import, unicode_literals
+from __future__ import absolute_import, unicode_literals, print_function
 from zope.cachedescriptors.property import Lazy
 from zope.component import createObject
 from zope.formlib import form
@@ -66,9 +66,9 @@ class ResendInvitationForm(GroupForm):
 
     def setUpWidgets(self, ignore_request=False):
         data = {'fromAddr': self.defaultFromEmail,
-                  'toAddr': self.defaultToEmail,
-                  'fn': self.userInfo.name,
-                  'userId': self.userId}
+                'toAddr': self.defaultToEmail,
+                'fn': self.userInfo.name,
+                'userId': self.userId}
         subject = 'Invitation to Join {0} (Action Required)'
         data['subject'] = subject.format(self.groupInfo.name)
 
@@ -95,8 +95,7 @@ accept this invitation.'''
 
     @Lazy
     def userInfo(self):
-        retval = createObject('groupserver.UserFromId', self.context,
-                            self.userId)
+        retval = createObject('groupserver.UserFromId', self.context, self.userId)
         return retval
 
     @Lazy
@@ -136,7 +135,7 @@ accept this invitation.'''
             inviteId = inviter.create_invitation(data, False)
             auditor.info(INVITE_OLD_USER, self.defaultToEmail)
             inviter.send_notification(data['subject'], data['message'],
-                                    inviteId, data['fromAddr'], data['toAddr'])
+                                      inviteId, data['fromAddr'], data['toAddr'])
         else:
             self.status = self.issues(u, e, g)
         assert self.status
@@ -149,9 +148,7 @@ accept this invitation.'''
 
     def get_auditor_inviter(self):
         ctx = get_the_actual_instance_from_zope(self.context)
-        inviter = Inviter(ctx, self.request, self.userInfo,
-                            self.adminInfo, self.siteInfo,
-                            self.groupInfo)
-        auditor = Auditor(self.siteInfo, self.groupInfo,
-                    self.adminInfo, self.userInfo)
+        inviter = Inviter(ctx, self.request, self.userInfo, self.adminInfo, self.siteInfo,
+                          self.groupInfo)
+        auditor = Auditor(self.siteInfo, self.groupInfo, self.adminInfo, self.userInfo)
         return (auditor, inviter)

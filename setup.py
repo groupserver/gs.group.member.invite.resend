@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright © 2014 OnlineGroups.net and Contributors.
+# Copyright © 2014, 2016 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -18,11 +18,12 @@ from version import get_version
 
 version = get_version()
 
-setup(name='gs.group.member.invite.resend',
+setup(
+    name='gs.group.member.invite.resend',
     version=version,
     description="Resend an invitation/.",
     long_description=open("README.rst").read() + "\n" +
-                    open(os.path.join("docs", "HISTORY.rst")).read(),
+    open(os.path.join("docs", "HISTORY.rst")).read(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         "Environment :: Web Environment",
