@@ -71,7 +71,7 @@
     </form>
     <script
       metal:fill-slot="javascript"
-      type="text/javascript" defer="true"
-      src="/++resource++gs-profile-invite-base-new-20140127.js"> </script>
+      type="text/javascript" defer="defer"
+      src="/++resource++gs-profile-invite-base-new-min-20160121.js"> </script>
   </body>
 </html>
