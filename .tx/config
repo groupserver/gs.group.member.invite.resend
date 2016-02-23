@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[gs-group-member-invite-resend.gs-group-member-invite-resend-pot]
+file_filter = gs/group/member/invite/resend/locales/<lang>/LC_MESSAGES/gs.group.member.invite.resend.po
+source_file = gs/group/member/invite/resend/locales/en/LC_MESSAGES/gs.group.member.invite.resend.po
+source_lang = en
+type = PO
+

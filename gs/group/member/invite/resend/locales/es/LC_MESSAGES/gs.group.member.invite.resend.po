@@ -1,32 +1,31 @@
 # 
 # Translators:
-# Michael JasonSmith <mpj17@ldots.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: gs.group.member.invite.resend\n"
 "POT-Creation-Date: 2016-02-23 17:14+0000\n"
-"PO-Revision-Date: 2016-02-23 17:41+0000\n"
-"Last-Translator: Michael JasonSmith <mpj17@ldots.org>\n"
-"Language-Team: French (http://www.transifex.com/groupserver/gs-group-member-invite-resend/language/fr/)\n"
+"PO-Revision-Date: 2016-02-23 17:25+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish (http://www.transifex.com/groupserver/gs-group-member-invite-resend/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Domain: DOMAIN\n"
-"Language: fr\n"
+"Language: es\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Preferred-Encodings: utf-8 latin1\n"
 
 #. Default: "<p>There is an error:</p>"
 #: ./reinvite.py:97
 msgid "feedback-error"
-msgstr "<p>Il y a une erreur :</p>"
+msgstr ""
 
 #. Default: "<p>There are errors:</p>"
 #: ./reinvite.py:99
 msgid "feedback-errors"
-msgstr "<p>Il y a des erreurs :</p>"
+msgstr ""
 
 #. Default: "<ul>\n<li>Cannot <b>resend</b> an invitation to ${userName},
 #. because they have yet been <i>invited</i> to\njoin
@@ -58,7 +57,7 @@ msgstr ""
 #. Default: "Invitation message"
 #: ./interfaces.py:44
 msgid "form-field-msg-h"
-msgstr "Message"
+msgstr ""
 
 #. Default: "The name of the invited member."
 #: ./interfaces.py:41
@@ -68,7 +67,7 @@ msgstr ""
 #. Default: "Name"
 #: ./interfaces.py:40
 msgid "form-field-name-h"
-msgstr "Nom"
+msgstr ""
 
 #. Default: "The subject-line of the invitation."
 #: ./interfaces.py:28
@@ -78,7 +77,7 @@ msgstr ""
 #. Default: "Subject"
 #: ./interfaces.py:27
 msgid "form-field-subject-h"
-msgstr "Sujet"
+msgstr ""
 
 #. Default: "The email address of the person receiving the invitation."
 #: ./interfaces.py:36
@@ -88,12 +87,12 @@ msgstr ""
 #. Default: "To"
 #: ./interfaces.py:35
 msgid "form-field-to-h"
-msgstr "À"
+msgstr ""
 
 #. Default: "Invitation to join ${groupName} (action required)"
 #: ./reinvite.py:74
 msgid "inviation-email-subject"
-msgstr "Un invitation joindre ${groupName} (action nécessaire)"
+msgstr ""
 
 #. Default: "Please accept this invitation to join ${groupName}. I have set up
 #. a\nprofile for you, so you can start participating in the group as soon as
@@ -105,17 +104,17 @@ msgstr ""
 #. Default: "Manage members"
 #: ./browser/templates/resend_invite.pt:36
 msgid "page-breadcrumb-manage"
-msgstr "Gérer les membres"
+msgstr ""
 
 #. Default: "Resend invitation"
 #: ./browser/templates/resend_invite.pt:38
 msgid "page-breadcrumb-resend"
-msgstr "Renvoyer l'invitation"
+msgstr ""
 
 #. Default: "Resend"
 #: ./reinvite.py:90
 msgid "page-button"
-msgstr "Renvoyer"
+msgstr ""
 
 #. Default: "To resend an invitation to ${userName} (${email}), customise the
 #. message below and click the <samp class=\"button\">Resend</samp> button."
@@ -126,14 +125,14 @@ msgstr ""
 #. Default: "Preview…"
 #: ./browser/templates/resend_invite.pt:65
 msgid "page-preview"
-msgstr "Aperçu"
+msgstr ""
 
 #. Default: "Resend the invitation to ${userName}"
 #: ./reinvite.py:46
 msgid "page-title"
-msgstr "Renvoyer l'invitation à ${userName}"
+msgstr ""
 
 #. Default: "Resend invitation: Manage members: ${groupName}: ${siteName}"
 #: ./browser/templates/resend_invite.pt:13
 msgid "page-title-element"
-msgstr "Renvoyer l'invitation: Gérer les membres: ${groupName}: ${siteName}"
+msgstr ""
