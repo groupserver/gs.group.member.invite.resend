@@ -55,15 +55,15 @@ class ResendInvitationForm(GroupForm):
     @Lazy
     def defaultFromEmail(self):
         emailUser = EmailUser(self.context, self.adminInfo)
-        addrs = emailUser.get_delivery_addresses()
-        retval = addrs and addrs[0] or ''
+        addrs = emailUser.get_delivery_addresses()  # Note: it is the *default* addresses
+        retval = addrs[0] if addrs else ''
         return retval
 
     @Lazy
     def defaultToEmail(self):
         emailUser = EmailUser(self.context, self.userInfo)
-        addrs = emailUser.get_addresses()
-        retval = addrs and addrs[0] or ''
+        addrs = emailUser.get_addresses()  # Note: It is *all* addresses (may not be verified)
+        retval = addrs[0] if addrs else ''
         return retval
 
     def setUpWidgets(self, ignore_request=False):
