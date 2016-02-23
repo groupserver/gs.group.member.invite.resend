@@ -1,13 +1,17 @@
 <html  xmlns="http://www.w3.org/1999/xhtml"
        xmlns:tal="http://xml.zope.org/namespaces/tal"
        xmlns:metal="http://xml.zope.org/namespaces/metal"
+       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+       i18n:domain="gs.group.member.invite.resend"
        metal:use-macro="context/@@groupserver_layout/page">
   <head>
-    <title metal:fill-slot="title">
-      <span tal:replace="view/label">Resend</span>:
+    <title metal:fill-slot="title" i18n:translate="page-title-element">
+      Resend invitation:
       Manage members:
-      <span tal:replace="view/groupInfo/name">This Group</span>:
-      <span tal:replace="view/siteInfo/name">This Site</span>
+      <span i18n:name="groupName"
+            tal:replace="view/groupInfo/name">This Group</span>:
+      <span i18n:name="siteName"
+            tal:replace="view/siteInfo/name">This Site</span>
     </title>
   </head>
   <body>
@@ -29,23 +33,23 @@
            tal:content="view/groupInfo/name">This group</a>
       </li>
       <li>
-        <a tal:attributes="href string:${view/groupInfo/relativeURL}/managemembers.html"><strong>Manage members</strong></a>
+        <a tal:attributes="href string:${view/groupInfo/relativeURL}/managemembers.html"><b i18n:translate="page-breadcrumb-manage">Manage members</b></a>
       </li>
-      <li>Resend invitation</li>
+      <li i18n:translate="page-breadcrumb-resend">Resend invitation</li>
     </ul>
     <form id="resend-invitation" enctype="multipart/form-data"
           method="post" action="." class="gs-content-js-required"
           tal:attributes="action request/URL"
           metal:fill-slot="body">
-      <h1 tal:content="view/label">Resend Invitation</h1>
-      <p>
-        To resend an invitation to <span tal:replace="view/userInfo/name"/>
-        (<code class="email" tal:content="view/defaultToEmail"/>),
+      <h1 tal:content="view/label">Resend invitation</h1>
+      <p class="intro muted" i18n:translate="page-intro">
+        To resend an invitation to
+        <span i18n:name="userName" class="fn"
+              tal:replace="view/userInfo/name"/>
+        (<code i18n:name="email" class="email"
+               tal:content="view/defaultToEmail"/>),
         customise the message below and click the
-        <samp class="button"
-              tal:define="action python:[a for a in view.actions][0].label"
-              tal:content="action">Big R</samp>
-        button.
+        <samp class="button">Resend</samp> button.
       </p>
       <div id="invitationRelatedFields">
         <tal:block define="widgets python:[[w for w in view.widgets][-1]]">
@@ -58,7 +62,8 @@
             tal:replace="structure widget/hidden"/>
         </tal:block>
         <p id="invite-message-preview-button">
-          <button class="btn">Preview&#8230;</button>
+          <button class="btn"
+                  i18n:translate="page-preview">Preview&#8230;</button>
         </p>
       </div><!--invitationFields-->
       <div class="buttons" tal:condition="view/availableActions">

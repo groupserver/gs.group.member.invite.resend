@@ -15,6 +15,7 @@
 from __future__ import unicode_literals, absolute_import, print_function
 from zope.schema import ASCIILine, Text, TextLine
 from zope.interface.interface import Interface
+from . import GSMessageFactory as _
 
 
 class IGSResendInvitation(Interface):
@@ -23,24 +24,26 @@ class IGSResendInvitation(Interface):
         description='The user ID of the person receiving the invitation.',
         required=True)
     subject = TextLine(
-        title='Subject',
-        description='The subject-line of the invitation.',
+        title=_('form-field-subject-h', 'Subject'),
+        description=_('form-field-subject-desc', 'The subject-line of the invitation.'),
         required=True)
     fromAddr = ASCIILine(
         title='From',
         description='The email address of the person sending the invitation.',
         required=True)
     toAddr = ASCIILine(
-        title='To',
-        description='The email address of the person receiving the invitation.',
+        title=_('form-field-to-h', 'To'),
+        description=_('form-field-to-desc',
+                      'The email address of the person receiving the invitation.'),
         required=True)
     fn = TextLine(
-        title='Name',
-        description='The name of the invited member.',
+        title=_('form-field-name-h', 'Name'),
+        description=_('form-field-name-desc', 'The name of the invited member.'),
         required=True)
     message = Text(
-        title='Invitation Message',
-        description='The message that appears at the top of the email invitation to the new '
-        'group member. The message will appear before the two links that allow the user to accept '
-        'or reject the invitation.',
+        title=_('form-field-msg-h', 'Invitation message'),
+        description=_('form-field-mesg-desc',
+                      'The message that appears at the top of the email invitation to the new '
+                      'group member. The message will appear before the two links that allow the '
+                      'user to accept or reject the invitation.'),
         required=True)

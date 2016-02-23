@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2016-02-23 17:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#. Default: "<p>There is an error:</p>"
+#: ./reinvite.py:97
+msgid "feedback-error"
+msgstr ""
+
+#. Default: "<p>There are errors:</p>"
+#: ./reinvite.py:99
+msgid "feedback-errors"
+msgstr ""
+
+#. Default: "<ul>\n<li>Cannot <b>resend</b> an invitation to ${userName}, because they have yet been <i>invited</i> to\njoin ${groupName}.</li>\n<li>No changes have been made.</li>\n</ul>"
+#: ./reinvite.py:125
+msgid "feedback-issues"
+msgstr ""
+
+#. Default: "<ul>\n<li>${userName} (with the email address {emailAddress}) is already a member 'of ${groupName}.</li>\n<li>No changes have been made.</li>\n</ul>"
+#: ./reinvite.py:111
+msgid "feedback-members"
+msgstr ""
+
+#. Default: "<ul>\n<li>Resent the invitation to ${userName} (to the email address ${emailAddress}) to join\n${groupName}.</li>\n</ul>"
+#: ./reinvite.py:118
+msgid "feedback-resent"
+msgstr ""
+
+#. Default: "The message that appears at the top of the email invitation to the new group member. The message will appear before the two links that allow the user to accept or reject the invitation."
+#: ./interfaces.py:45
+msgid "form-field-mesg-desc"
+msgstr ""
+
+#. Default: "Invitation message"
+#: ./interfaces.py:44
+msgid "form-field-msg-h"
+msgstr ""
+
+#. Default: "The name of the invited member."
+#: ./interfaces.py:41
+msgid "form-field-name-desc"
+msgstr ""
+
+#. Default: "Name"
+#: ./interfaces.py:40
+msgid "form-field-name-h"
+msgstr ""
+
+#. Default: "The subject-line of the invitation."
+#: ./interfaces.py:28
+msgid "form-field-subject-desc"
+msgstr ""
+
+#. Default: "Subject"
+#: ./interfaces.py:27
+msgid "form-field-subject-h"
+msgstr ""
+
+#. Default: "The email address of the person receiving the invitation."
+#: ./interfaces.py:36
+msgid "form-field-to-desc"
+msgstr ""
+
+#. Default: "To"
+#: ./interfaces.py:35
+msgid "form-field-to-h"
+msgstr ""
+
+#. Default: "Invitation to join ${groupName} (action required)"
+#: ./reinvite.py:74
+msgid "inviation-email-subject"
+msgstr ""
+
+#. Default: "Please accept this invitation to join ${groupName}. I have set up a\nprofile for you, so you can start participating in the group as soon as you\naccept this invitation."
+#: ./reinvite.py:78
+msgid "invitation-email-body"
+msgstr ""
+
+#. Default: "Manage members"
+#: ./browser/templates/resend_invite.pt:36
+msgid "page-breadcrumb-manage"
+msgstr ""
+
+#. Default: "Resend invitation"
+#: ./browser/templates/resend_invite.pt:38
+msgid "page-breadcrumb-resend"
+msgstr ""
+
+#. Default: "Resend"
+#: ./reinvite.py:90
+msgid "page-button"
+msgstr ""
+
+#. Default: "To resend an invitation to ${userName} (${email}), customise the message below and click the <samp class=\"button\">Resend</samp> button."
+#: ./browser/templates/resend_invite.pt:49
+msgid "page-intro"
+msgstr ""
+
+#. Default: "Preview…"
+#: ./browser/templates/resend_invite.pt:65
+msgid "page-preview"
+msgstr ""
+
+#. Default: "Resend the invitation to ${userName}"
+#: ./reinvite.py:46
+msgid "page-title"
+msgstr ""
+
+#. Default: "Resend invitation: Manage members: ${groupName}: ${siteName}"
+#: ./browser/templates/resend_invite.pt:13
+msgid "page-title-element"
+msgstr ""
+

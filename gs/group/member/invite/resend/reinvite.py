@@ -16,6 +16,7 @@ from __future__ import absolute_import, unicode_literals, print_function
 from zope.cachedescriptors.property import Lazy
 from zope.component import createObject
 from zope.formlib import form
+from zope.i18n import translate
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
 from Products.CustomUserFolder.userinfo import userInfo_to_anchor
 from Products.XWFCore.XWFUtils import get_the_actual_instance_from_zope
@@ -26,6 +27,7 @@ from gs.profile.email.base import EmailUser
 from gs.group.member.invite.base.inviter import Inviter
 from gs.group.member.invite.base.audit import (Auditor, INVITE_OLD_USER, INVITE_EXISTING_MEMBER)
 from .interfaces import IGSResendInvitation
+from . import GSMessageFactory as _
 
 
 class ResendInvitationForm(GroupForm):
@@ -41,7 +43,8 @@ class ResendInvitationForm(GroupForm):
 
     @Lazy
     def label(self):
-        retval = 'Resend the invitation to {0}'.format(self.userInfo.name)
+        retval = _('page-title', 'Resend the invitation to ${userName}',
+                   mapping={'userName': self.userInfo.name})
         return retval
 
     @Lazy
@@ -68,29 +71,32 @@ class ResendInvitationForm(GroupForm):
                 'toAddr': self.defaultToEmail,
                 'fn': self.userInfo.name,
                 'userId': self.userId}
-        subject = 'Invitation to Join {0} (Action Required)'
-        data['subject'] = subject.format(self.groupInfo.name)
+        subject = _('inviation-email-subject', 'Invitation to join ${groupName} (action required)',
+                    mapping={'groupName': self.groupInfo.name})
+        data['subject'] = translate(subject)
 
-        m = '''Please accept this invitation to join {0}. I have set up a
-profile for you, so you can start  participating in the group as soon as you
-accept this invitation.'''
+        body = _('invitation-email-body',
+                 '''Please accept this invitation to join ${groupName}. I have set up a
+profile for you, so you can start participating in the group as soon as you
+accept this invitation.''', mapping={'groupName': self.groupInfo.name})
 
-        data['message'] = m.format(self.groupInfo.name)
+        data['message'] = translate(body)
 
         self.widgets = form.setUpWidgets(
             self.form_fields, self.prefix, self.context,
             self.request, form=self, data=data,
             ignore_request=ignore_request)
 
-    @form.action(label='Resend', failure='handle_invite_action_failure')
+    @form.action(name='resend', label=_('page-button', 'Resend'),
+                 failure='handle_invite_action_failure')
     def handle_invite(self, action, data):
         self.actual_handle_add(action, data)
 
     def handle_invite_action_failure(self, action, data, errors):
         if len(errors) == 1:
-            self.status = '<p>There is an error:</p>'
+            self.status = _('feedback-error', '<p>There is an error:</p>')
         else:
-            self.status = '<p>There are errors:</p>'
+            self.status = _('feedback-errors', '<p>There are errors:</p>')
 
     @Lazy
     def userInfo(self):
@@ -102,27 +108,30 @@ accept this invitation.'''
         return self.loggedInUser
 
     def already_a_member(self, u, e, g):
-        msg = '<ul><li>{0} (with the email address {1}) is already a member '\
-              'of {2}.</li>\n<li>No changes have been made.</li></ul>'
-        retval = msg.format(u, e, g)
+        retval = _('feedback-members', '''<ul>
+<li>${userName} (with the email address {emailAddress}) is already a member 'of ${groupName}.</li>
+<li>No changes have been made.</li>
+</ul>''', mapping={'userName': u, 'emailAddress': e, 'groupName': g, })
         return retval
 
     def resent(self, u, e, g):
-        msg = '<ul><li>Resent an invitation to {0} (with the email '\
-              'address {1}) to join {2}.</li></ul>'
-        retval = msg.format(u, e, g)
+        retval = _('feedback-resent', '''<ul>
+<li>Resent the invitation to ${userName} (to the email address ${emailAddress}) to join
+${groupName}.</li>
+</ul>''', mapping={'userName': u, 'emailAddress': e, 'groupName': g, })
         return retval
 
     def issues(self, u, e, g):
-        msg = '<ul><li>Cannot <strong>resend</strong> an invitation to {0}, '\
-              'because they have yet been invited to join {1}.</li>'\
-              '<li>No changes have been made.</li>'
-        retval = msg.format(u, g)
+        retval = _('feedback-issues', '''<ul>
+<li>Cannot <b>resend</b> an invitation to ${userName}, because they have yet been <i>invited</i> to
+join ${groupName}.</li>
+<li>No changes have been made.</li>
+</ul>''', mapping={'userName': u, 'groupName': g, })
         return retval
 
     def actual_handle_add(self, action, data):
-        e = '<code class="email">%s</code>' % self.defaultToEmail
         u = userInfo_to_anchor(self.userInfo)
+        e = '<code class="email">%s</code>' % self.defaultToEmail
         g = groupInfo_to_anchor(self.groupInfo)
         auditor, inviter = self.get_auditor_inviter()
         fullMembers = FullMembers(self.groupInfo.groupObj)
@@ -139,12 +148,6 @@ accept this invitation.'''
         else:
             self.status = self.issues(u, e, g)
         assert self.status
-
-    def handle_add_action_failure(self, action, data, errors):
-        if len(errors) == 1:
-            self.status = '<p>There is an error:</p>'
-        else:
-            self.status = '<p>There are errors:</p>'
 
     def get_auditor_inviter(self):
         ctx = get_the_actual_instance_from_zope(self.context)
