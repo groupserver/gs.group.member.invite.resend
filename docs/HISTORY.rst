@@ -7,6 +7,9 @@ Changelog
 * [DE] Updating the German localisation, thanks to
   `Stephan G. Blendinger`_
 
+.. _Stephan G. Blendinger:
+   https://www.transifex.com/user/profile/stephanblendinger/
+
 2.1.0 (2016-02-23)
 ------------------
 
