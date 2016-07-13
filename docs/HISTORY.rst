@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.1.1 (2016-07-12)
+------------------
+
+* [DE] Updating the German localisation, thanks to
+  `Stephan G. Blendinger`_
+
 2.1.0 (2016-02-23)
 ------------------
 
